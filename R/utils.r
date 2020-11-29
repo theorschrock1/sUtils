@@ -1,10 +1,3 @@
-#' @import stringr
-#' @import glue
-#' @importFrom rlang expr exprs enexpr enexprs
-
-.onLoad <- function(libname, pkgname) {
-
-}
 
 #' @export
 map=purrr::map
