@@ -15,7 +15,7 @@ x \%ngrep\% pattern
 a vector of matches
 }
 \description{
-
+Same as running \code{x[!grepl(pattern,x)]}
 }
 \examples{
  a <- c("wages.csv", "wages.txt", "wages.xlsx")

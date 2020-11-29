@@ -1,7 +1,7 @@
 #' Inverse grep
 #'
 #'
-#' Same as running \code{x[!grepl(pattern,x)])
+#' Same as running \code{x[!grepl(pattern,x)]}
 
 #' @name %ngrep%
 #' @param  a target vector
