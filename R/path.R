@@ -1,7 +1,7 @@
 #' Build a file path.
 
 #' @name path
-#' @param ...
+#' @param ... the pieces of the path
 #' @return \code{path}: character(file_path)
 #' @examples
 
