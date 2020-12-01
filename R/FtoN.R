@@ -88,3 +88,11 @@ chr_approx=function(x,y){
 `%nin%`<-function (x, table){
   match(x, table, nomatch = 0) == 0
 }
+#' @export
+drop_nulls <- function(x){
+  x[!sapply(x, is.null)]
+}
+
+#Split a vector in to two based on a logical test
+
+
