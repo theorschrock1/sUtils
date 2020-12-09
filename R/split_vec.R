@@ -19,3 +19,7 @@ split_vec <- function(x, y) {
     list(true = x[y], false = x[!y])
     # Returns: list(x[TRUE],x[FALSE])
 }
+#' @export
+`%split_vec%`<-function(x,y){
+  split_vec(x, y)
+}

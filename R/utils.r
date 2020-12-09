@@ -41,4 +41,25 @@ enexprs=rlang::enexprs
 #' @export
 exprs=rlang::exprs
 
-
+#' @export
+str_count=stringr::str_count
+#' @export
+str_extract=stringr::str_extract
+#' @export
+str_extract_all=stringr::str_extract_all
+#' @export
+str_extract_all=stringr::str_extract_all
+#' @export
+str_replace=stringr::str_replace
+#' @export
+str_replace_all=stringr::str_replace_all
+#' @export
+str_remove=stringr::str_remove
+#' @export
+str_remove_all=stringr::str_remove_all
+#' @export
+str_trim=stringr::str_trim
+#' @export
+str_split=stringr::str_split
+#' @export
+str_length=stringr::str_length
