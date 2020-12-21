@@ -1,0 +1,12 @@
+test_that("is_empty", {
+  local_edition(3)
+  expect_snapshot(is_empty(x = NULL), cran = TRUE)
+  expect_snapshot(is_empty(x = 1), cran = TRUE)
+  expect_snapshot(is_empty(x = c(1:2)), cran = TRUE)
+  expect_snapshot(is_empty(x = data.frame()), cran = TRUE)
+  expect_snapshot(is_empty(x = data.frame(1)), cran = TRUE)
+  expect_snapshot(is_empty(x = list()), cran = TRUE)
+  expect_snapshot(is_empty(x = list(1)), cran = TRUE)
+  expect_snapshot(is_empty(x = "a"), cran = TRUE)
+  expect_snapshot(is_empty(x = ""), cran = TRUE)
+})
