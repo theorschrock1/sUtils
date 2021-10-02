@@ -10,7 +10,9 @@ fill_missing_slots=function(x,y){
 
     fillna<-function(x,missing_names,missing_class){
       for(i in 1:l(missing_names)){
-        insert_na<-try_running(as(NA,"function"),message="nope")
+        print(missing_class[i])
+        insert_na<-try(as(NA,missing_class[i]),silent = TRUE)
+        print(insert_na)
         if(is_error(insert_na))insert_na<-as(list(NA),"function")
         x[[missing_names[i]]]<-insert_na
       }
@@ -27,9 +29,18 @@ fill_missing_slots=function(x,y){
 
 stack_list=function(x,y){
   out<-fill_missing_slots(x,y)
-  map2(out$x,out$y,c)
+  map2(out$x,out$y,function(x,y){
+    if(is.list(x)&is.list(y)){
+     if(is(x[[1]],'function'))
+       return(c(x,y))
+     return(stack_list(x,y))
+    }
+
+    c(x,y)
+    })
 }
 #' @export
 stack_lists=function(lists){
   reduce(lists,stack_list)
 }
+

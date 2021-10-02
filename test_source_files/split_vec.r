@@ -5,3 +5,4 @@ x <- c(1:4)
 y <- x > 2
 split_vec(x, y)
 },overwrite = TRUE)
+run_app()

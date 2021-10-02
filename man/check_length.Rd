@@ -7,7 +7,7 @@
 check_length(x, len, null.ok = FALSE)
 }
 \arguments{
-\item{len}{\code{[integerish]}}
+\item{len}{\code{[integerish]} Acceptable lengths of an object}
 
 \item{null.ok}{\code{[logical]}  Must have an exact length of \code{1}.  Defaults to \code{FALSE}}
 }

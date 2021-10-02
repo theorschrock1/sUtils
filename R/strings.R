@@ -89,3 +89,27 @@ any_inside=function(x,y){
 `%ndetect%`<-function(x,pattern){
   !grepl(pattern%sep%"|",x)
 }
+#' @export
+`%starts_with%`<-function(x,pattern){
+  x%detect%start_with(pattern)
+}
+#' @export
+`%nstarts_with%`<-function(x,pattern){
+  x%ndetect%start_with(pattern)
+}
+#' @export
+`%ends_with%`<-function(x,pattern){
+  x%detect%ends_with(pattern)
+}
+#' @export
+`%nends_with%`<-function(x,pattern){
+  x%ndetect%ends_with(pattern)
+}
+#' @export
+tstr_extract=function(x,pattern){
+  lapply(transpose(str_extract_all(x,pattern)),unlist)
+}
+#' @export
+`%p%`<-function(x,y){
+  paste0(x,y)
+}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/stop_quiet.R
 \name{stop_quiet}
 \alias{stop_quiet}
-\title{Stop function execution quitely.}
+\title{Stop function execution quietly.}
 \usage{
 stop_quiet(x, env = caller_env())
 }
@@ -15,5 +15,15 @@ stop_quiet(x, env = caller_env())
 \code{stop_quiet}: \code{[string]} returns a character string of class error message from the function environment.
 }
 \description{
-Stop function execution quitely.
+Stop function execution quietly.
+}
+\examples{
+fn=function(x){
+  if(is.character(x))
+    stop_quiet('input x should be numeric, not {class(x)}')
+x+1
+
+}
+fn('a')
+fn(2)
 }

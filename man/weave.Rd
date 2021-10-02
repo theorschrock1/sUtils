@@ -2,15 +2,20 @@
 % Please edit documentation in R/weave.R
 \name{weave}
 \alias{weave}
-\title{weave to vectors or lists.}
+\title{weave two vectors or lists.}
 \usage{
 weave(x, y)
+}
+\arguments{
+\item{x}{\code{[[vector|list]}}
+
+\item{y}{\code{[class(x)]} must have the same class as \code{x} and have length equal to \code{[1 | length(x) | length(x)-1 ]}.  If length is 1, \code{y} will be inserted between every instance of \code{x}.}
 }
 \value{
 \code{weave}: \code{[vector|list]}
 }
 \description{
-weave to vectors or lists.
+weave two vectors or lists.
 }
 \examples{
  weave(letters, LETTERS)

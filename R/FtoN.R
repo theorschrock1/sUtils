@@ -51,11 +51,12 @@ len0=function(x){
 g_stop=function(x,silent=FALSE,env=caller_env()){
   if(silent){
     out<-glue(x,.envir = env)
-    class(out)<-'error_message'
+    class(out)<-c('error_message',class(out))
     return(out)
   }
   stop(glue(x,.envir = env),call.=FALSE)
 }
+
 #' @export
 g_print=function(x,env=caller_env()){
   print(glue(x,.envir = env))
@@ -92,7 +93,39 @@ chr_approx=function(x,y){
 drop_nulls <- function(x){
   x[!sapply(x, is.null)]
 }
+#' @export
+add_R6_active_logicals=function(R6,.f,test_variable,options){
+  .f=enexpr(.f)
+  fnames<-glue("is_{test_variable}_{options}")
+  tv=expr(self$tmp)
+  tv[[3]]=parse_expr(test_variable)
+  for(i in 1:l(options)){
+    tmp<-expr(.f(!!tv,!!options[i]))
+    tmp[[1]]<-.f
+    fn_in<-expr(function(value) {
+      if(missing(value)){
+        return(!!tmp)
+      }
+      stop("This variable is read only")
+    })
+    R6$set('active',fnames[i],eval( fn_in))
+  }
+  R6
+}
+#' @export
+mget_R6_attrs=function(r6_envir,attrs,.in=NULL){
+  if(!is.null(.in)){
+    r6_envir<-r6_envir[[.in]]
+  }
 
-#Split a vector in to two based on a logical test
+  list_call= function(x){
+    if(is(x,"language"))return(list(x))
+    x
+  }
 
+  out=mget(attrs,envir=r6_envir,ifnotfound = '.variableNotFound') %>%
+    lapply(list_call)
+  out[sapply(out,function(x)!is_list(x)||x!='.variableNotFound')]
+
+}
 
